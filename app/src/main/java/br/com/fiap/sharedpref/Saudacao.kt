@@ -30,7 +30,7 @@ class Saudacao : AppCompatActivity() {
         } */
 
         val data = recuperaDadoArquivo("saudacao")
-        Log.i("recuperaDadoArquivo", "dados: "+data)
+
         val tokenizer = StringTokenizer(data, ":")
         val nome = if (tokenizer.hasMoreTokens()) tokenizer.nextToken() else "sem nome"
         val tratamento = if (tokenizer.hasMoreTokens()) tokenizer.nextToken() else "sem tratamento"
