@@ -29,14 +29,13 @@ class MainActivity : AppCompatActivity() {
             editor.putString("nome",txtNome.editableText.toString())
             editor.putString("tratamento", listTratamento.selectedItem.toString())
             editor.apply()
-
-
-            */
-            Toast.makeText(this, "Saudação gravada", Toast.LENGTH_SHORT).show()
-
             val dados = txtNome.editableText.toString() + ":" + listTratamento.selectedItem.toString()
             gravarDadoArquivo("saudacao", dados)
-
+            */
+            Toast.makeText(this, "Saudação gravada", Toast.LENGTH_SHORT).show()
+            val db = DatabaseManager(this, "saudacoes")
+            db.removeSaudacao()
+            db.insereSaudacao(1,txtNome.text.toString(),listTratamento.selectedItem.toString())
         }
 
         btnExibir.setOnClickListener{
@@ -45,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun gravarDadoArquivo(fileName : String, data : String) {
+   /* fun gravarDadoArquivo(fileName : String, data : String) {
 
         try {
             val arquivo = openFileOutput(fileName,Context.MODE_PRIVATE)
@@ -59,5 +58,5 @@ class MainActivity : AppCompatActivity() {
             Log.i("gravaDadoArquivo", "mano... o bagulho tá sinistro kkkkk EXORCISA!")
         }
 
-    }
+    }*/
 }

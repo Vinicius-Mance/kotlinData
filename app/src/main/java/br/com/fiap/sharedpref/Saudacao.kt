@@ -18,6 +18,25 @@ class Saudacao : AppCompatActivity() {
 
         val txvSaudacao = findViewById<TextView>(R.id.txvSaudacao)
 
+        val db = DatabaseManager(this,"saudacoes")
+
+        val cursor = db.listaSaudacao()
+
+        var nome = ""
+        var tratamento = ""
+
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+            nome = cursor.getString(cursor.getColumnIndex("nome"))
+            tratamento = cursor.getString(cursor.getColumnIndex("tratamento"))
+        }
+
+        if (tratamento.equals("N/A")) {
+            txvSaudacao.text = nome
+        } else {
+            txvSaudacao.text = tratamento + " " + nome
+        }
+
        /* val saudacaoSharedPref = this.getSharedPreferences("saudacao",Context.MODE_PRIVATE)
 
         val nome = saudacaoSharedPref.getString("nome", "Usuário(a)")
@@ -29,7 +48,7 @@ class Saudacao : AppCompatActivity() {
             txvSaudacao.text = tratamento + " " + nome
         } */
 
-        val data = recuperaDadoArquivo("saudacao")
+       /* val data = recuperaDadoArquivo("saudacao")
 
         val tokenizer = StringTokenizer(data, ":")
         val nome = if (tokenizer.hasMoreTokens()) tokenizer.nextToken() else "sem nome"
@@ -59,5 +78,8 @@ class Saudacao : AppCompatActivity() {
            Log.i("recuperaDadoArquivo", "mano... o bagulho tá sinistro kkkkk EXORCISA!")
            return ""
        }
+
+        */
    }
+
 }
