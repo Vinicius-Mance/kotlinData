@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">sharedpref</string>
+
+    <string-array name="saudacoes">
+        <item>Sr</item>
+        <item>Sra</item>
+        <item>Dr</item>
+        <item>Dra</item>
+        <item>N/A</item>
+    </string-array>
+</resources>
